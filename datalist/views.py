@@ -13,11 +13,18 @@ def create(request):
     if request.method == 'POST':
         data = request.POST
         print('data', data)
-        user = UserData(name=data.get('name'))
+        user = UserData(name=data.get('name'), line='text-decoration-none')
         user.save()
         return redirect('main')
     else:
         return render(request, 'pages/create.html')
+
+def done(request, id):
+    user = UserData.objects.get(id=id)
+    user.line = 'text-decoration-line-through'
+    user.save()
+    return redirect('main')
+
 
 def delete(request, id):
     if request.method == 'POST':

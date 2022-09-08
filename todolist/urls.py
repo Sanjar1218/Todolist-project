@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from datalist.views import main, create, delete, edit
+from datalist.views import main, create, delete, edit, done
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('create', create, name='create'),
     path('delete/<int:id>', delete, name='delete'),
     path('edit/<int:id>', edit, name='edit'),
+    path('done/<int:id>', done, name='done'),
 ]

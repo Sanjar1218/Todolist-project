@@ -1,8 +1,11 @@
 {% extends 'pages/base.html' %}
 {% block content %}
-    <form action="" method="post">
-        <label for="inp">name of list</label>
-         <input type="text" id="inp" name="name" value="{{ name }}">
-         <button type="submit">add</button>
-    </form> 
+    <form action="" method="post" class="mb-3">
+        <div class="mx-auto card-body" style="width: 60%;">
+           <h3 class="card-title">Edit</h5>
+           <label for="inp" class="form-label ms-3">Name of list</label>
+           <input type="text" id="inp" name="name" class="form-control w-50" value="{{ name }}">
+           <button type="submit" class="btn btn-primary w-25 mt-3">edit</button>
+        </div>
+     </form>  
     {% endblock content%}
