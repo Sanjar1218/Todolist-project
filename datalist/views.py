@@ -20,9 +20,19 @@ def create(request):
     else:
         return render(request, 'pages/create.html')
 
-def edit(request, id):
+def delete(request, id):
     if request.method == 'POST':
         user = UserData.objects.get(id=id).delete()
         print(user)
         return redirect('main')
     return render(request, 'pages/edit.html')
+
+def edit(request, id):
+    user = UserData.objects.get(id=id)
+    if request.method == 'POST':
+        data = request.POST
+        user.name = data.get('name')
+        user.save()
+        return redirect('main')
+    
+    return render(request, 'pages/edit.html', {'name': user.name})
