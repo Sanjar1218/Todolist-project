@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Usertask
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from .forms import UserRegister
 
 @login_required
 def main(request):
@@ -48,19 +49,17 @@ def edit(request, id):
         return redirect('main')
     
     return render(request, 'pages/edit.html', {'name': user.name})
-# def register(request):
-#     if request.method == 'POST':
-#         data = request.POST
-#         username = data.get('username')
-#         password1 = data.get('password1')
-#         password2 = data.get('password2')
-#         if password1 == password2:
-#             user = Username(username=username, password1=password1, password2=password2)
-#             user.save()
-#         else:
-#             return redirect('register')
-#         return redirect('main')
-#     return render(request, 'pages/register.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegister(request.POST)
+        if form.is_valid():
+            print('saved')
+            form.save()
+            return redirect('loginname')
+    else:
+        form = UserRegister()
+    return render(request, 'pages/register.html', {'forms': form})
 
 # def login(request):
 #     if request.method == 'POST':
