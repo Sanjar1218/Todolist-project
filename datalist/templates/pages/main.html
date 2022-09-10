@@ -1,10 +1,12 @@
 {% extends 'pages/base.html' %}
 {% block content %}
-    <h1>TodoList</h1>
+    <div class="d-flex justify-content-between">
+        <h1>TodoList</h1>
+        <a href="logout">Logout</a>
+    </div>
     <form action="create" method="post" class="mb-3">
-        <div class="card-body" style="width: 60%;">
-           <h5 class="card-title">Name of task</h5>
-           <label for="inp" class="form-label ms-3">name of list</label>
+        <div class="card-body ms-3" style="width: 60%;">
+           <h5 class="card-title mb-2">Name of task</h5>
            <input type="text" id="inp" name="name" class="form-control w-70">
            <button type="submit" class="btn btn-primary w-25 mt-3">add</button>
         </div>
