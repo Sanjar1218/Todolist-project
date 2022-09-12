@@ -28,7 +28,7 @@ def create(request):
 
 def done(request, id):
     user = Usertask.objects.get(id=id)
-    user.line = 'text-decoration-line-through'
+    user.line = 'text-decoration-line-through' if user.line!='text-decoration-line-through' else 'text-decoration-none'
     user.save()
     return redirect('main')
 
@@ -51,6 +51,7 @@ def edit(request, id):
     return render(request, 'pages/edit.html', {'name': user.name})
 
 def register(request):
+    print('post', request.POST)
     if request.method == 'POST':
         form = UserRegister(request.POST)
         if form.is_valid():
